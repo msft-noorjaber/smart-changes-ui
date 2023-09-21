@@ -1,0 +1,8 @@
+C:\Users\agaltrai\source\repos\RssFeedDashbaord\obj\Release\net6.0\PubTmp\Out\RssFeedDashbaord.exe
+C:\Users\agaltrai\source\repos\RssFeedDashbaord\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+C:\Users\agaltrai\source\repos\RssFeedDashbaord\obj\Release\net6.0\PubTmp\Out\appsettings.json
+C:\Users\agaltrai\source\repos\RssFeedDashbaord\obj\Release\net6.0\PubTmp\Out\RssFeedDashbaord.dll
+C:\Users\agaltrai\source\repos\RssFeedDashbaord\obj\Release\net6.0\PubTmp\Out\RssFeedDashbaord.deps.json
+C:\Users\agaltrai\source\repos\RssFeedDashbaord\obj\Release\net6.0\PubTmp\Out\RssFeedDashbaord.runtimeconfig.json
+C:\Users\agaltrai\source\repos\RssFeedDashbaord\obj\Release\net6.0\PubTmp\Out\RssFeedDashbaord.pdb
+C:\Users\agaltrai\source\repos\RssFeedDashbaord\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll

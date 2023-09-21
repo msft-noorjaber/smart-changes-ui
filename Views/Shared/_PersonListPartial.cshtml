@@ -1,0 +1,102 @@
+﻿@model List<Root>
+
+@if (Model != null)
+{
+
+    <style>
+
+        /* Define different background colors for even and odd rows */
+         th {
+            background-color: gray; /* Dark gray background color for headers */
+            color: #fff; /* White text color for headers */
+            font-weight: bold; /* Bold font weight for headers */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light gray for even rows */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff; /* White for odd rows */
+        }
+        /* Style for the table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        /* Style for the scrollable div */
+        .scrollable-cell {
+            overflow: auto;
+            max-height: 100px; /* Set a maximum height for the scrollable area */
+        }
+    </style>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="25%">GitHub Link</th>
+                <th width="75%">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model)
+            {
+                <tr>
+                    <td width="25%"> <a href=@person.HtmlUrl target="_blank"> @person.Title   </a></td>
+                    <td width="75%">
+                        @*   <div class="scrollable-cell" id="json-cell-1">
+                @foreach (var SG in @person.SmartChanges)
+                {
+                <pre> @SG </pre><br>
+
+                }
+                </div> *@
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th width ="50%">Title</th>
+                                    <th width="50%">Summary of changes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var SG in @person.SmartChanges)
+                                {
+                                    <tr>
+                                        <td width="50%">@SG.Title</td>
+                                        <td width ="50%">@SG.Summary</td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No file selected.</p>
+}
+
+
+
+
+<script>
+
+    // Function to format and display JSON data in a div
+    function displayJsonData(data, divId) {
+        var jsonDiv = document.getElementById(divId);
+        jsonDiv.textContent = JSON.stringify(data, null, 2); // Format JSON with 2-space indentation
+    }
+
+</script>

@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Microsoft Doc Changes ";
+}
+
+<h2>Stay Up-to-Date </h2>
+
+@if (ViewData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @ViewData["Error"]
+    </div>
+}
+else
+{
+    <div class="form-group">
+        <label for="dropdown">Select the desired technology :</label>
+        <select class="form-control" id="dropdown">
+            <option value="">-- Select a post --</option>
+            @foreach (var item in ViewData["DropdownItems"] as List<SelectListItem>)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </div>
+
+   <p>
+    <div id="post-details">
+        @await Html.PartialAsync("_PersonListPartial", (List<Root>)Model)
+
+    </div>
+    </p>
+}
+
+@section scripts {
+    <script>
+        // JavaScript code to handle drop-down change event
+        $(function () {
+            $('#dropdown').change(function () {
+                var postId = $(this).val();
+                if (postId) {
+                    $.ajax({
+                        url: '/Home/GetPostDetails/' + postId,
+                        type: 'GET',
+                        success: function (data) {
+                            $('#post-details').html(data);
+                        },
+                        error: function () {
+                            alert('An error occurred while fetching post details.');
+                        }
+                    });
+                } else {
+                    $('#post-details').empty();
+                }
+            });
+        });
+    </script>
+}
+
+@* <script>
+    $(function () {
+        $('#dropdown').change(function () {
+            var postId = $(this).val();
+            if (postId) {
+                $.ajax({
+                    url: '/Home/GetPostDetails/' + postId,
+                    type: 'GET',
+                    success: function (data) {
+                    },
+                    error: function () {
+                        $('#personList').html('<div class="alert alert-danger">An error occurred while fetching post details.</div>');
+                    }
+                });
+            } 
+            else {
+                $('#personList').empty();
+            }
+        });
+    });
+</script> *@
